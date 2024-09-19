@@ -17,12 +17,20 @@ app.use(cors({
 
 app.use(express.json());
 
-try {
-  mongoose.connect(process.env.MONGODB_URI);
-  console.log("Connected to MongoDB");
-} catch (error) {
-  console.log("MongoDB Connection failed")
+async function connectDB() {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.log("MongoDB Connection failed", error);
+    process.exit(1); // Exit the application if the connection fails
+  }
 }
+
+connectDB();
 
 app.use('/api', testRoute,);
 app.use('/api/auth', authRoutes);
