@@ -12,7 +12,8 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors({
   origin: '*',
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 }));
 
 app.use(express.json());
@@ -32,6 +33,11 @@ async function connectDB() {
 
 connectDB();
 
+
+app.get('/', (req, res) => {
+  res.send('Hello NetflixGPT Backend');
+});
+
 app.use('/api', testRoute,);
 app.use('/api/auth', authRoutes);
 
@@ -39,3 +45,5 @@ app.use('/api/auth', authRoutes);
 app.listen(PORT, () => {
   console.log(`Listening at port: ${PORT}`);
 });
+
+module.exports = app;
