@@ -71,7 +71,6 @@ module.exports = async (req, res) => {
         },
         jwtToken,
         the_movie_db_bearer_token,
-        open_ai_key,
       });
     } catch (error) {
       console.log(`Error orrcured during signup: ${error}`);

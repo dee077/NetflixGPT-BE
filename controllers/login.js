@@ -32,7 +32,6 @@ module.exports = async (req, res) => {
           userType: dbUser.userType,
         },
         jwtToken,
-        open_ai_key,
         the_movie_db_bearer_token,
 
       });
