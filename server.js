@@ -3,6 +3,7 @@ const cors = require("cors");
 const testRoute = require("./routes/testRoute")
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
+const openAiRoutes = require("./routes/openAiRoutes")
 
 require("dotenv").config();
 
@@ -39,7 +40,7 @@ app.get('/', (req, res) => {
   res.send('Hello NetflixGPT Backend');
 });
 
-app.use('/api', testRoute,);
+app.use('/api', testRoute, openAiRoutes);
 app.use('/api/auth', authRoutes);
 
 
